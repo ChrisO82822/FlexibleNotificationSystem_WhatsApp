@@ -1,0 +1,31 @@
+AI Usage Documentation
+
+Student: Christopher Oji
+
+Assignment: The WhatsApp Maintenance Enhancement
+
+AI Tool Used:
+ChatGPT
+
+Prompt Used:
+Create a Java class called WhatsAppService that implements the existing NotificationMedium interface using the exact method signature void send(String message). The send method should output: [WhatsApp] Sending message: <message text>. Additionally, create a standalone command-line test class that switches between EmailService, SMSService, and WhatsAppService at runtime via the existing AlertSystem.setMedium(NotificationMedium medium) method. AlertSystem.java and NotificationMedium.java should remain unchanged.
+
+How I Ensured the AI Output Matched the Existing Interface Signature:
+I reviewed the existing NotificationMedium interface and verified that it defines a single method: void send(String message). The WhatsAppService class declares this as public void send(String message) and includes the @Override annotation, confirming the method signature aligns with the interface. Any mismatch in the method name, return type, or parameter type would have caused a compilation failure.
+
+How I Avoided Rewriting the Core Engine:
+AlertSystem.java and NotificationMedium.java were left untouched. The only additions were WhatsAppService.java, which implements the existing interface, and MaintenanceTest.java, which serves as a separate test script. Since AlertSystem depends on the NotificationMedium interface, it can work with EmailService, SMSService, or WhatsAppService interchangeably through composition.
+
+JavaDoc Adjustments Made:
+1. Added class-level JavaDocs to WhatsAppService clarifying that it extends the system without altering AlertSystem.
+2. Added method-level JavaDocs for send(String message), including the required @param tag.
+3. Added class-level and main-method JavaDocs to MaintenanceTest.
+4. Omitted @return tags on void methods, as they are not applicable.
+5. Maintained professional wording consistent with the rest of the project documentation.
+
+Verification Performed:
+1. Compiled all Java files using javac *.java.
+2. Executed the test script using java MaintenanceTest.
+3. Verified that the output included messages from Email, SMS, and WhatsApp.
+4. Confirmed that all messages were recorded in the AlertSystem ArrayList log through the existing notifyUser behavior.
+5. Confirmed that no changes to AlertSystem.java were required to support the new WhatsApp feature.
